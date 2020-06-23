@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="TpModule4.MainPage">
+    <ContentPage.Content>
+        <!--TOP BAR-->
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal" BackgroundColor="#58B0F0" Padding="10,25">
+                <Label HorizontalOptions="Start" Text="Nouveau" TextColor="White"></Label>
+                <Label HorizontalOptions="CenterAndExpand" Text="Accueil" TextColor="White"></Label>
+                <Label HorizontalOptions="End" Text="Rechercher" TextColor="White"></Label>
+            </StackLayout>
+            <!--CONTENT-->
+            <ScrollView>
+                <StackLayout Orientation="Vertical" VerticalOptions="Start">
+
+                    <StackLayout Orientation="Horizontal">
+                        <!--75's width box-->
+                        <BoxView VerticalOptions="Start" WidthRequest="75" />
+                        <!--id name & time-->
+                        <StackLayout Orientation="Vertical" HorizontalOptions="Start" VerticalOptions="Start">
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="5" HorizontalOptions="FillAndExpand">
+                                <Label HorizontalOptions="Start" TextColor="Black" Text="Duuude" />
+                                <Label HorizontalOptions="Start" TextColor="Black" Text="@TheRealLebowski" />
+                                <Label HorizontalOptions="EndAndExpand" TextColor="Gray" Text="15m" />
+                            </StackLayout>
+                            <!--tweet content-->
+                            <Label Padding="5" VerticalOptions="Center" Text="Look, let me explain something to you. I'm not Mr. Lebowski. You're Mr. Lebowski. I'm the Dude. So that's what you call me. That, or His Dudeness … Duder … or El Duderino, if, you know, you're not into the whole brevity thing." />
+                        </StackLayout>
+                    </StackLayout>
+                    <!--buttons-->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Center">
+                        <Label HorizontalOptions="CenterAndExpand" Text="Répondre" />
+                        <Label HorizontalOptions="CenterAndExpand" Text="Retweet"/>
+                        <Label HorizontalOptions="CenterAndExpand" Text="Favoris"/>
+                    </StackLayout>
+                    <!--little grey bar-->
+                    <StackLayout BackgroundColor="LightGray" HeightRequest="2" Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Center">
+
+                    </StackLayout>
+                </StackLayout>
+
+            </ScrollView>
+
+            <!--BOTTOM BAR-->
+            <StackLayout Orientation="Horizontal" HeightRequest="75" HorizontalOptions="Fill" VerticalOptions="EndAndExpand">
+                <Label VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Text="Fil"/>
+                <Label VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Text="Notifications" />
+                <Label VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Text="Messages"/>
+                <Label VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Text="Moi"/>
+
+            </StackLayout>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
