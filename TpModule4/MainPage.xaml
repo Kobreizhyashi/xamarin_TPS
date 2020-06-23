@@ -33,9 +33,7 @@
                         <Label HorizontalOptions="CenterAndExpand" Text="Favoris"/>
                     </StackLayout>
                     <!--little grey bar-->
-                    <StackLayout BackgroundColor="LightGray" HeightRequest="2" Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Center">
-
-                    </StackLayout>
+                    <StackLayout BackgroundColor="LightGray" HeightRequest="2" Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Center"/>
                 </StackLayout>
 
             </ScrollView>
