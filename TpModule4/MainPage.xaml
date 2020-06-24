@@ -1,52 +1,92 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="TpModule4.MainPage">
-    <ContentPage.Content>
-        <!--TOP BAR-->
-        <StackLayout Orientation="Vertical">
-            <StackLayout Orientation="Horizontal" BackgroundColor="#58B0F0" Padding="10,25">
-                <Label HorizontalOptions="Start" Text="Nouveau" TextColor="White"></Label>
-                <Label HorizontalOptions="CenterAndExpand" Text="Accueil" TextColor="White"></Label>
-                <Label HorizontalOptions="End" Text="Rechercher" TextColor="White"></Label>
-            </StackLayout>
-            <!--CONTENT-->
-            <ScrollView>
-                <StackLayout Orientation="Vertical" VerticalOptions="Start">
-
-                    <StackLayout Orientation="Horizontal">
-                        <!--75's width box-->
-                        <BoxView VerticalOptions="Start" WidthRequest="75" />
-                        <!--id name & time-->
-                        <StackLayout Orientation="Vertical" HorizontalOptions="Start" VerticalOptions="Start">
-                            <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="5" HorizontalOptions="FillAndExpand">
-                                <Label HorizontalOptions="Start" TextColor="Black" Text="Duuude" />
-                                <Label HorizontalOptions="Start" TextColor="Black" Text="@TheRealLebowski" />
-                                <Label HorizontalOptions="EndAndExpand" TextColor="Gray" Text="15m" />
-                            </StackLayout>
-                            <!--tweet content-->
-                            <Label Padding="5" VerticalOptions="Center" Text="Look, let me explain something to you. I'm not Mr. Lebowski. You're Mr. Lebowski. I'm the Dude. So that's what you call me. That, or His Dudeness … Duder … or El Duderino, if, you know, you're not into the whole brevity thing." />
-                        </StackLayout>
-                    </StackLayout>
-                    <!--buttons-->
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Center">
-                        <Label HorizontalOptions="CenterAndExpand" Text="Répondre" />
-                        <Label HorizontalOptions="CenterAndExpand" Text="Retweet"/>
-                        <Label HorizontalOptions="CenterAndExpand" Text="Favoris"/>
-                    </StackLayout>
-                    <!--little grey bar-->
-                    <StackLayout BackgroundColor="LightGray" HeightRequest="2" Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Center"/>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:TpModule4;assembly=TpModule4" mc:Ignorable="d" x:Class="TpModule4.MainPage">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="75"/>
+        </Grid.RowDefinitions>
+        <ContentView BackgroundColor="#58B0F0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+            <Grid Margin="10, 25">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <ImageButton Grid.Row="0" Grid.Column="0" WidthRequest="25" HorizontalOptions="StartAndExpand" BackgroundColor="Transparent" Source="{local:ImageResource TpModule4.images.pencil.png}"></ImageButton>
+                <Label Grid.Row="0" Grid.Column="1" FontAttributes="Bold" FontSize="20" TextColor="White" Text="Accueil" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
+                <ImageButton Grid.Row="0" Grid.Column="2" WidthRequest="25" HorizontalOptions="EndAndExpand" BackgroundColor="Transparent" Source="{local:ImageResource TpModule4.images.search.png}"></ImageButton>
+            </Grid>
+        </ContentView>
+        <ContentView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" x:Name="loginForm">
+            <StackLayout Orientation="Vertical">
+                <Label HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Text="Connexion à Twitter"></Label>
+                <Entry x:Name="pseudo" HorizontalOptions="FillAndExpand" Placeholder="Identifiant Twitter" />
+                <Entry x:Name="password" IsPassword="True" Placeholder="Mot de passe" HorizontalOptions="FillAndExpand"/>
+                <StackLayout Orientation="Horizontal">
+                    <Switch x:Name="reminder" VerticalOptions="Center" IsToggled="False" HorizontalOptions="Start" />
+                    <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" Text="Mémoriser mes informations"></Label>
                 </StackLayout>
-
-            </ScrollView>
-
-            <!--BOTTOM BAR-->
-            <StackLayout Orientation="Horizontal" HeightRequest="75" HorizontalOptions="Fill" VerticalOptions="EndAndExpand">
-                <Label VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Text="Fil"/>
-                <Label VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Text="Notifications" />
-                <Label VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Text="Messages"/>
-                <Label VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Text="Moi"/>
-
+                <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" TextColor="DarkRed" Text="" x:Name="error"></Label>
+                <Button HorizontalOptions="FillAndExpand" Text="Se connecter" Clicked="Connect_Clicked"></Button>
             </StackLayout>
-        </StackLayout>
 
-    </ContentPage.Content>
+        </ContentView>
+
+        <ContentView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" IsVisible="False" x:Name="tweetForm">
+            <ScrollView HorizontalOptions="FillAndExpand">
+
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <ContentView  HorizontalOptions="FillAndExpand">
+                        <StackLayout>
+                            <ContentView>
+                                <Grid HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="75"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="25"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Image Source="https://picsum.photos/50/50/?random.jpg" BackgroundColor="Black" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0"/>
+                                    <Label Text="Duude" Grid.Row="0" Grid.Column="1"></Label>
+                                    <Label Text="@TheRealLebowski" Grid.Row="0" Grid.Column="2"></Label>
+                                    <Label Text="15m" TextColor="Gray" Grid.Row="0" Grid.Column="3" HorizontalOptions="StartAndExpand"></Label>
+                                    <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Text="Look, let me explain something to you. I'm not Mr. Lebowski. You're Mr. Lebowski. I'm the Dude. So that's what you call me. That, or His Dudeness … Duder … or El Duderino, if, you know, you're not into the whole brevity thing."></Label>
+                                </Grid>
+                            </ContentView>
+                            <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
+
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                    <ImageButton Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent" Source="{local:ImageResource TpModule4.images.reply.png}"></ImageButton>
+                                    <ImageButton Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent" Source="{local:ImageResource TpModule4.images.retweet.png}"></ImageButton>
+                                    <ImageButton Grid.Row="0" Grid.Column="2" HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent" Source="{local:ImageResource TpModule4.images.favorite.png}"></ImageButton>
+                                </StackLayout>
+                            </ContentView>
+                        </StackLayout>
+                    </ContentView>
+                </StackLayout>
+            </ScrollView>
+        </ContentView>
+        <ContentView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3">
+            <StackLayout Orientation="Horizontal">
+                <Label TextColor="Gray" Text="Fil" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                <Label TextColor="Gray" Text="Notification" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                <Label TextColor="Gray" Text="Messages" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                <Label TextColor="Gray" Text="Moi" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+            </StackLayout>
+        </ContentView>
+    </Grid>
 </ContentPage>
