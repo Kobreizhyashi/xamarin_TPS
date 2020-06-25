@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TpModule4.Entities;
 using TpModule4.Models;
 
 namespace TpModule4.Services

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using TpModule4.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace TpModule4.Models
@@ -68,26 +69,36 @@ namespace TpModule4.Models
                 stringBuilder.Append("Le mot de passe ne peut pas être null et doit posséder au moins 6 caractères.");
             }
 
+            if (!haveError)
+            {
+                var current = Connectivity.NetworkAccess;
+
+                if (current == NetworkAccess.Internet)
+                {
+                    haveError = !service.authenticate(this.Login.Text, this.Password.Text);
+                    if (haveError)
+                    {
+                        stringBuilder.Append("Cet identifiant est inconnu.. Ou je ne sais quoi");
+                    }
+                }
+                else
+                {
+                    haveError = true;
+                    stringBuilder.Append("Pas de connexion mon petit ! Achète du forfait ! ");
+                }
+            }
+
             if (haveError)
             {
                 this.Error.Error = stringBuilder.ToString();
             }
-            else
-            {
-                haveError = !service.authenticate(this.Login.Text, this.Password.Text);
 
-                if (haveError)
-                {
-                    stringBuilder.Append("Cet identifiant est inconnu.. Ou je ne sais quoi");
-                    this.Error.Error = stringBuilder.ToString();
-                }
 
-            }
 
 
             result = !haveError;
 
             return result;
         }
-    }
+}
 }

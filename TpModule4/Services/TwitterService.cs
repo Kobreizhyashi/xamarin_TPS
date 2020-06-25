@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TpModule4.Entities;
 using TpModule4.Models;
 using TpModule4.Services;
 using Xamarin.Forms;

@@ -62,10 +62,10 @@
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
                                     <Image Source="https://picsum.photos/50/50/?random.jpg" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0"/>
-                                    <Label Text="Duude" Grid.Row="0" Grid.Column="1"></Label>
-                                    <Label Text="@TheRealLebowski" Grid.Row="0" Grid.Column="2"></Label>
-                                    <Label Text="15m" TextColor="Gray" Grid.Row="0" Grid.Column="3" HorizontalOptions="StartAndExpand"></Label>
-                                    <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Text="Look, let me explain something to you. I'm not Mr. Lebowski. You're Mr. Lebowski. I'm the Dude. So that's what you call me. That, or His Dudeness … Duder … or El Duderino, if, you know, you're not into the whole brevity thing."></Label>
+                                    <Label Text="Duude" Grid.Row="0" Grid.Column="1" x:Name="pseudo"></Label>
+                                    <Label Text="@TheRealLebowski" Grid.Row="0" Grid.Column="2" x:Name="name"></Label>
+                                    <Label Text="15m" TextColor="Gray" Grid.Row="0" Grid.Column="3" x:Name="date" HorizontalOptions="StartAndExpand"></Label>
+                                    <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" x:Name="text" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Text="Look, let me explain something to you. I'm not Mr. Lebowski. You're Mr. Lebowski. I'm the Dude. So that's what you call me. That, or His Dudeness … Duder … or El Duderino, if, you know, you're not into the whole brevity thing."></Label>
                                 </Grid>
                             </ContentView>
                             <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
