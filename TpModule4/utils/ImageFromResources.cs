@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
+using System.Text;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace TpModule4
+namespace TpModule4.Utils
 {
     [ContentProperty(nameof(Source))]
-    public class ImageResourceExtension : IMarkupExtension
+    public class ImageFromResources : IMarkupExtension
     {
         public string Source { get; set; }
 
@@ -18,7 +20,7 @@ namespace TpModule4
             }
 
             // Do your translation lookup here, using whatever method you require
-            var imageSource = ImageSource.FromResource(Source, typeof(ImageResourceExtension).GetTypeInfo().Assembly);
+            var imageSource = ImageSource.FromResource(Source, typeof(ImageFromResources).GetTypeInfo().Assembly);
 
             return imageSource;
         }
