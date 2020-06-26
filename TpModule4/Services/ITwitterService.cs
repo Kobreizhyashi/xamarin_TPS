@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using TpModule4.Entities;
 using TpModule4.Models;
 
@@ -10,7 +11,7 @@ namespace TpModule4.Services
 
         Boolean authenticate(String login, String password);
 
-        List<Tweet> getTweets(String user);
+        ObservableCollection<Tweet> getUserTweets(int id);
 
     }
 }

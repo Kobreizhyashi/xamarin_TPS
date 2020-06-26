@@ -17,11 +17,5 @@ namespace TpModule4.Entities
             Login = login;
             Password = password;
         }
-
-        public User(string login, string password)
-        {
-            Login = login;
-            Password = password;
-        }
     }
 }

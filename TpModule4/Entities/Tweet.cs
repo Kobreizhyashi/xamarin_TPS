@@ -9,6 +9,13 @@ namespace TpModule4.Entities
         public String Content { get; set; }
         public User User { get; set; }
 
+        public Tweet(String date, String content, User user)
+        {
+            this.Date = date;
+            this.Content = content;
+            this.User = user;
+        }
+
         public Tweet()
         {
         }

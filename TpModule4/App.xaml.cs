@@ -1,4 +1,5 @@
 ﻿using System;
+using TpModule4.Vue;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,9 +11,8 @@ namespace TpModule4
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
-            
-            
+            MainPage = new NavigationPage(new LoginPage());
+           
         }
 
         protected override void OnStart()
